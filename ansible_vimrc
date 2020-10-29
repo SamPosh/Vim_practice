@@ -60,6 +60,7 @@ call plug#begin('~/.vim/plugged')
    Plug 'jistr/vim-nerdtree-tabs'
 "   Plug 'tpope/vim-fugitive'
 "   Plug 'airblade/vim-gitgutter'
+    Plug 'raimondi/delimitmate'  "Parenthesis closing
 call plug#end()
 
 " Mapping section
