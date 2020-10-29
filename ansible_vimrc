@@ -1,7 +1,3 @@
-"set term=xterm-256color 
-"set term=xterm
-"set term=screen-256color
-"set term=putty-256color
 set nocompatible
 set number
 
@@ -42,7 +38,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
  "call plug#begin()
-   Plug 'vim-syntastic/syntastic'
    Plug 'huawenyu/vim-log-syntax' " To show errors in log file different color
    Plug 'MarcWeber/vim-addon-mw-utils'
    Plug 'tomtom/tlib_vim'
@@ -104,3 +99,7 @@ nnoremap <silent> <F3> :NERDTreeToggle<CR>
 if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
+
+" Install yamllint and ansible-lint to show errors
+" pip3 install yamllint
+" pip3 install ansible-lint
