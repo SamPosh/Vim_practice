@@ -1,0 +1,106 @@
+"set term=xterm-256color 
+"set term=xterm
+"set term=screen-256color
+"set term=putty-256color
+set nocompatible
+set number
+
+" to search using find add curent dir and all it's subdir intp path
+set path+=**
+set wildmenu
+
+"suffixes added because gf will find if no extension is mentioned
+set suffixesadd+=.yml
+set suffixesadd+=.yaml
+
+if !has('nvim')
+ set ttymouse=xterm2
+endif
+
+" add color in statusba
+if !has('gui_running')
+    set t_Co=256
+endif
+set noshowmode  "status bar already shows it 
+set laststatus=2
+" enable mouse 
+set mouse=a
+colorscheme murphy
+au BufWinLeave *.*  colorscheme default
+"autocmd FileType yaml setlocal ai ts=2 sw=2
+autocmd FileType sh,yaml,yaml.ansible,vim setlocal shiftwidth=2 tabstop=2 expandtab
+" Consider any .yml and .yaml files as yaml.ansible
+au BufRead,BufNewFile *.yml,*.yaml set filetype=yaml.ansible
+
+if has('nvim')
+"set putty-256color 
+call plug#begin('~/.vim/plugged')
+"  Plug 'neoclide/coc.nvim'
+   Plug 'dense-analysis/ale'
+call plug#end()
+endif
+
+call plug#begin('~/.vim/plugged')
+ "call plug#begin()
+   Plug 'vim-syntastic/syntastic'
+   Plug 'huawenyu/vim-log-syntax' " To show errors in log file different color
+   Plug 'MarcWeber/vim-addon-mw-utils'
+   Plug 'tomtom/tlib_vim'
+   Plug 'garbas/vim-snipmate'
+   " Optional:
+   Plug 'honza/vim-snippets'
+   "ultisnips is snippet engine
+   "Plug 'sirver/ultisnips' 
+   Plug 'phenomenes/ansible-snippets'
+   Plug 'pearofducks/ansible-vim'
+  " Plug 'ctrlpvim/ctrlp.vim' " replaced by FZF
+   Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
+   Plug 'burntsushi/ripgrep'
+   Plug 'itchyny/lightline.vim'
+"   Plug 'vim-airline/vim-airline'
+ "  Plug 'vim-airline/vim-airline-themes'
+   Plug 'Yggdroot/indentLine'
+   Plug 'dense-analysis/ale'
+	 Plug 'scrooloose/nerdtree'
+   Plug 'jistr/vim-nerdtree-tabs'
+"   Plug 'tpope/vim-fugitive'
+"   Plug 'airblade/vim-gitgutter'
+call plug#end()
+
+" Mapping section
+nnoremap <C-p> :Files<Cr>
+nnoremap <C-f> :BLines<Cr>
+"nnoremap <C-S-f> :Rg!
+"
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"IndentLine
+let g:indentLine_enabled = 1
+let g:indentLine_concealcursor = 0
+let g:indentLine_char = '|'
+let g:indentLine_faster = 1
+
+
+"NERDTree configuration
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 50
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+nnoremap <silent> <F2> :NERDTreeFind<CR>
+nnoremap <silent> <F3> :NERDTreeToggle<CR>
+
+" ripgrep
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+endif
