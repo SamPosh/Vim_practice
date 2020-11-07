@@ -1,0 +1,89 @@
+Vim shortcuts
+===============
+
+edit file 
+:e <filename>
+:e# open previously closed file)
+:ls
+:e#2 open the  (open the 2nd index file listed)
+:b <filename> (open buffer from name)
+
+Tab edit
+:tabe filename (Open the file in new tab) 
+(gt - go to tab)
+gt - next tab
+gT - prev tab
+tabn <number> - to get to particular tab
+<n>gt -3gt will go to the 3rd tab
+tabonly will close other tabs
+tabclose will close the current tab
+tabs - will display all the tabs
+1gt will display first tab. 1gT will go to last tab
+
+search a string in file
+:vim /pattern/g % (search string in a file)
+:copen (:cw) to go to quickfix listed
+:cn go to next line of string
+:ccl to close
+
+Search and replace
+:%s/<search>/<replace>/g (replace all word in a file without asking confirmation)
+:%s/<search>/<replace>/gc (replace all the word in file but ask for confirmation)
+
+go to file in cursor (like alt+p in vscode)
+gf
+ctrl+w gf -will open the file in tab
+gF will open the file name which has line number 
+If file name is not having extension then add 
+set suffixesadd+=.yml 
+
+
+Find a file in project
+:find <filename> will open the file in same buffer
+set path+=$PWD/** (it will look into all files in current folder )
+also set path+=** will look into all the sub dir recursively
+:tabf <filename> will open the file in new tab
+
+
+Open a file in split
+:vs filename (if Path is set , any file can be opened)
+
+Auto complete
+-----------------
+ctrl-n (display the contents to be auto-complete)
+ctrl+x ctrl-f (to show the file names)
+Ctrl+x ctrl+l to autocomplete lines
+
+If file is getting refreshed then use
+:e! to load it
+or 
+:set autoread
+
+To show indent 
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char       = '|'
+let g:indentLine_setConceal = 0
+
+Blog
+https://www.freecodecamp.org/news/vim-for-people-who-use-visual-studio-code/
+
+map ctrl+p for fzf
+nnoremap <C-p> :Files<Cr>
+
+Search within the range
+:266720,266740g/fatal:/#
+
+Open a terminal
+-----------------
+:terminal
+:bo term (to open a terminal in bottom right)
+:tab terminal to open a terminal in separate tab
+
+To reduce the window size
+Ctrl-w -
+ctrl-w + (to increase size)
+ctrl-w = (to make both the windows same size)
+
+
+
+
