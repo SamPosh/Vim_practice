@@ -1,3 +1,4 @@
+" Use this when raw VIM is there with no plugin
 set nocompatible
 set number
 
