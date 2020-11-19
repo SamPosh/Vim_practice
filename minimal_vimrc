@@ -7,12 +7,13 @@ set autoread
 set autoindent
 set backspace=indent,eol,start
 set smarttab
-set hlsearch
+set hlsearch " highlight the search
 
 " Status Line properties
 set ruler
 set laststatus=2
-hi StatusLine ctermbg=white ctermfg=magenta
+" set colors in status bar
+hi StatusLine ctermbg=white ctermfg=magenta 
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
