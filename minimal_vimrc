@@ -1,0 +1,45 @@
+set nocompatible
+set number
+
+set autoread
+
+set autoindent
+set backspace=indent,eol,start
+set smarttab
+set hlsearch
+
+" Status Line properties
+set ruler
+set laststatus=2
+hi StatusLine ctermbg=white ctermfg=magenta
+
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
+" Disable annoying beeping
+set noerrorbells
+set vb t_vb=
+
+" to search using find add curent dir and all it's subdir intp path
+set path+=**
+set wildmenu
+
+
+if !has('nvim')
+ set ttymouse=xterm2
+endif
+
+" add color in statusbar
+if !has('gui_running')
+    set t_Co=256
+endif
+
+" For ansible development
+autocmd FileType sh,yaml,yaml.ansible,vim setlocal shiftwidth=2 tabstop=2 expandtab
+" Consider any .yml and .yaml files as yaml.ansible
+au BufRead,BufNewFile *.yml,*.yaml set filetype=yaml.ansible
+
+"suffixes added because gf will find if no extension is mentioned
+set suffixesadd+=.yml
+set suffixesadd+=.yaml
