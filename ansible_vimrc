@@ -56,17 +56,19 @@ call plug#begin('~/.vim/plugged')
  "  Plug 'vim-airline/vim-airline-themes'
    Plug 'Yggdroot/indentLine'
    Plug 'dense-analysis/ale'
-	 Plug 'scrooloose/nerdtree'
+   Plug 'scrooloose/nerdtree'
    Plug 'jistr/vim-nerdtree-tabs'
 "   Plug 'tpope/vim-fugitive'
 "   Plug 'airblade/vim-gitgutter'
     Plug 'raimondi/delimitmate'  "Parenthesis closing
+    Plug 'dyng/ctrlsf.vim'
 call plug#end()
 
 " Mapping section
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-f> :BLines<Cr>
-"nnoremap <C-S-f> :Rg!
+nmap <C-S-f> :CtrlSF
+
 "
 " Syntastic settings
 set statusline+=%#warningmsg#
