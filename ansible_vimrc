@@ -68,6 +68,9 @@ call plug#end()
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-f> :BLines<Cr>
 nmap <C-S-f> :CtrlSF
+" Search word under cursor in multiple files
+nmap <leader>* :CtrlSF "<C-R><C-W>"<CR>
+
 
 "
 " Syntastic settings
