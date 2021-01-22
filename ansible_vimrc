@@ -29,39 +29,50 @@ autocmd FileType sh,yaml,yaml.ansible,vim setlocal shiftwidth=2 tabstop=2 expand
 au BufRead,BufNewFile *.yml,*.yaml set filetype=yaml.ansible
 
 if has('nvim')
-"set putty-256color 
+"let $TERM = 'putty-256color'
 call plug#begin('~/.vim/plugged')
 "  Plug 'neoclide/coc.nvim'
    Plug 'dense-analysis/ale'
+   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+call plug#end()
+else
+call plug#begin('~/.vim/plugged')
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 call plug#end()
 endif
 
 call plug#begin('~/.vim/plugged')
  "call plug#begin()
+"   Plug 'vim-syntastic/syntastic'
    Plug 'huawenyu/vim-log-syntax' " To show errors in log file different color
    Plug 'MarcWeber/vim-addon-mw-utils'
    Plug 'tomtom/tlib_vim'
-   Plug 'garbas/vim-snipmate'
+   "Plug 'garbas/vim-snipmate'
    " Optional:
    Plug 'honza/vim-snippets'
    "ultisnips is snippet engine
-   "Plug 'sirver/ultisnips' 
+   Plug 'sirver/ultisnips'
    Plug 'phenomenes/ansible-snippets'
    Plug 'pearofducks/ansible-vim'
   " Plug 'ctrlpvim/ctrlp.vim' " replaced by FZF
    Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
    Plug 'burntsushi/ripgrep'
    Plug 'itchyny/lightline.vim'
-"   Plug 'vim-airline/vim-airline'
- "  Plug 'vim-airline/vim-airline-themes'
+   "Plug 'vim-airline/vim-airline'
+   "Plug 'vim-airline/vim-airline-themes'
    Plug 'Yggdroot/indentLine'
    Plug 'dense-analysis/ale'
-   Plug 'scrooloose/nerdtree'
-   Plug 'jistr/vim-nerdtree-tabs'
-"   Plug 'tpope/vim-fugitive'
-"   Plug 'airblade/vim-gitgutter'
-    Plug 'raimondi/delimitmate'  "Parenthesis closing
-    Plug 'dyng/ctrlsf.vim'
+   "Plug 'scrooloose/nerdtree'
+   "Plug 'jistr/vim-nerdtree-tabs'
+   Plug 'raimondi/delimitmate'  "Parenthesis closing
+   Plug 'dyng/ctrlsf.vim'
+   Plug 'mhinz/vim-startify'
+   Plug 'voldikss/vim-floaterm'
+   "Plug 'ptzz/lf.vim'  " lf file manager"
+   "Plug 'rbgrouleff/bclose.vim'  " In Neovim to install lf this is required"
+   Plug 'tomasr/molokai'
 call plug#end()
 
 " Mapping section
@@ -100,6 +111,19 @@ let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
+
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+#Deoplete will help auto-completion
+let g:deoplete#enable_at_startup = 1
 
 " ripgrep
 if executable('rg')
