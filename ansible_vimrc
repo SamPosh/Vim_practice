@@ -20,7 +20,7 @@ endif
 set noshowmode  "status bar already shows it 
 set laststatus=2
 " enable mouse 
-set mouse=a
+" set mouse=a
 colorscheme murphy
 au BufWinLeave *.*  colorscheme default
 "autocmd FileType yaml setlocal ai ts=2 sw=2
